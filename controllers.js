@@ -2,20 +2,20 @@
 // manages the logic and functionalities behind each route in application
 // these routes will be paired up with a HTTP request in app.js
 
-const data = require("./data");
+const todos = require("./data");
 
 class Controller {
     // getting all todos
     async getTodos() {
         // return all todos
-        return new Promise((resolve, _) => resolve(data));
+        return new Promise((resolve, _) => resolve(todos));
     }
 
     // getting a single todo
     async getTodo(id) {
         return new Promise((resolve, reject) => {
             // get the todo
-            let todo = data.find((todo) => todo.id === parseInt(id));
+            let todo = todos.find((todo) => todo.id === parseInt(id));
             if (todo) {
                 // return the todo
                 resolve(todo);
@@ -44,7 +44,7 @@ class Controller {
     async updateTodo(id) {
         return new Promise((resolve, reject) => {
             // get the todo.
-            let todo = data.find((todo) => todo.id === parseInt(id));
+            let todo = todos.find((todo) => todo.id === parseInt(id));
             // if no todo, return an error
             if (!todo) {
                 reject(`No todo with id ${id} found`);
@@ -60,7 +60,7 @@ class Controller {
     async deleteTodo(id) {
         return new Promise((resolve, reject) => {
             // get the todo
-            let todo = data.find((todo) => todo.id === parseInt(id));
+            let todo = todos.find((todo) => todo.id === parseInt(id));
             // if no todo, return an error
             if (!todo) {
                 reject(`No todo with id ${id} found`);
