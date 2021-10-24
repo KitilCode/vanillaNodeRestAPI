@@ -8,19 +8,18 @@ const { getReqData } = require('./utils')
 const PORT = process.env.PORT || 8999;
 
 const server = http.createServer(async (req, res) => {
-    // // set the request route
-    // if (req.url === '/api' && req.method === 'GET') {
-    //     // response headers
-    //     // application/json is one content type
-    //     res.writeHead(200, {'Content-Type': 'application/json'});
-    //     // set the response
-    //     res.write('howdy, this is a vanilla Node.js API');
-    //     // end the response
-    //     res.end()
-    // }
+    // set the request route
+    if (req.url === '/api' && req.method === 'GET') {
+        // response headers
+        // application/json is one content type
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        // set the response
+        res.write('howdy, this is a vanilla Node.js API');
+        // end the response
+        res.end()
+    }
     // /api/todos : GET
-    // else if (req.url === "/api/todos" && req.method === "GET") {
-    if (req.url === "/api/todos" && req.method === "GET") {
+    else if (req.url === "/api/todos" && req.method === "GET") {
         // get the todos.
         const todos = await new Controller().getTodos();
         // set the status code, and content-type
